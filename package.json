@@ -1,0 +1,19 @@
+{
+  "name": "core",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "live-server client --host=localhost --port=5500 --no-browser"
+  },
+  "keywords": [],
+  "author": "hsw",
+  "license": "ISC",
+  "description": "JS Core study",
+  "devDependencies": {
+    "@eslint/js": "^9.3.0",
+    "eslint": "^9.3.0",
+    "globals": "^15.3.0",
+    "live-server": "^1.2.2"
+  }
+}
