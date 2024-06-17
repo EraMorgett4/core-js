@@ -8,7 +8,7 @@
 // 2-2. 오류가 발생했다면, try 코드 중단 catch 블록으로 흐름이 넘어 감
 
 try {
-  console.log(value);
+  //   console.log(value);
 } catch (e) {
   console.log(e.name);
   console.log('참조 오류입니다 : ' + e.message);
