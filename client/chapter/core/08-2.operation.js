@@ -2,25 +2,35 @@
 /* Comparison Operator */
 /* ------------------- */
 
-const number = [10, '10', 6, 101, 10_000];
+
+const number = [10,'10',6,101,10_000];
 
 // ~ 보다 큼 또는 작음 → boolean
 let lessThen = number[0] < number[3];
+console.log('lessThen : ',lessThen);
 
 let greaterThen = number[0] > number[2];
+console.log('greaterThen : ',greaterThen);
 
 // ~ 보다 크거나 작음 또는 같음 → boolean
 let lessThenAndEqual = number[3] <= number[1];
+console.log('lessThenAndEqual : ',lessThenAndEqual);
+
 let greaterThenAndEqual = number[0] >= number[1];
+console.log('greaterThenAndEqual : ',greaterThenAndEqual)
 
 // 동등(등급이나 정도가 같다) → boolean
 let equal = number[0] == number[1];
+console.log('equal : ',equal);
 
 // 다름(같지 않음) → boolean
-let inequal = number[0] != number[1];
+let unequal = number[0] != number[1];
+console.log('unequal : ',unequal)
 
 // 동일(똑같다) → boolean
 let same = number[0] === number[1];
+console.log('same : ',same);
+
 
 // 문자 비교
 // 사전편집(lexicographical) 순
@@ -28,6 +38,7 @@ let same = number[0] === number[1];
 // 예) 'ㅎ' > 'ㄱ' → true
 // 소문자가 대문자보다 크다고 판단
 // 예) 'A' > 'a' → false
+
 
 // 문자 비교 알고리즘(문제 해결을 위한 절차)
 // 1. 두 문자열의 첫 글자 비교
@@ -40,3 +51,11 @@ let same = number[0] === number[1];
 
 // console.log('Design' <= 'Development');
 // console.log('디자인' <= '개발');
+
+
+
+
+
+
+
+

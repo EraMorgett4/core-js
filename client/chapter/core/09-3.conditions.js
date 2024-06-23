@@ -104,49 +104,46 @@ if (thisTime === MORNING) {
 
 // const value = +prompt('0~6까지의 숫자를 입력해주세요.');
 
-// 함수는 하나의 기능만을 수행하는 것
+// 함수는 하나의 기능만을 수행하는 것 
 
 // Separation of concerns  (관심사의 분리)
 //          매개변수 parameter
-function getRandom(n) {
+function getRandom(n){
   const value = Math.floor(Math.random() * n);
   return value;
 }
 
 // const number = getRandom(7);
 
-function getDay(value) {
+function getDay(value){
+
   switch (value) {
-    case 0:
-      return '일';
-    case 1:
-      return '월';
-    case 2:
-      return '화';
-    case 3:
-      return '수';
-    case 4:
-      return '목';
-    case 5:
-      return '금';
-    case 6:
-      return '토';
+    case 0: return '일';
+    case 1: return '월';
+    case 2: return '화';
+    case 3: return '수';
+    case 4: return '목';
+    case 5: return '금';
+    case 6: return '토';
   }
 }
 
+
 // 3. 0~6까지 랜덤수를 받아서
 
-console.clear();
+console.clear()
 
-function weekend() {
+function weekend(){
   // getDay 실행해서 요일을 받아옴  일 ~ 월
   const today = getDay(getRandom(7));
+
 
   // if(today.includes('토') || today.includes('일')){
   //   return '주말입니다!';
   // }else{
   //   return '평일입니다.'
   // }
+
 
   // 해당 요일을 가지고 토,일 => 주말입니다.
 
@@ -156,9 +153,33 @@ function weekend() {
 
   // const day = today.includes('토') ? '토요일' : today.includes('일') ? '일요일' : '평일'
   // return day;
-  return today.includes('토')
-    ? '토요일'
-    : today.includes('일')
-    ? '일요일'
-    : '평일';
+  return today.includes('토') ? '토요일' : today.includes('일') ? '일요일' : '평일'
+
 }
+
+
+
+const day = weekend();
+
+console.log(day) // '평일'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -14,34 +14,35 @@ let undef;
 console.log(typeof undef);
 
 // 3. 따옴표를 사용해 묶은 텍스트(큰", 작은', 역`)
-const double = 'hello';
+const double = 'hello'; // string literal
 const single = 'hello';
-const backtick = `hello ${10 + 5}`;
-console.log(typeof backtick);
+const backtick = `hello ${double + single}`;
 
-const str = new String('hello');
+console.log(backtick);
 
-console.log(str, typeof str);
-console.log(double, typeof double);
+const str = new String('hello'); // constructor function
+
+console.log(str);
 
 // 4. 정수, 부동 소수점 숫자(길이 제약)
 
-const integer = 150;
+const integer = 150; // number literal
 const floatingPointNumber = 10.5;
 
 console.log(typeof Infinity);
-console.log(typeof NaN);
 
 const num = new Number(150);
+
 console.log(num);
 
 // 5. 길이에 제약이 없는 정수(예: 암호 관련 작업에서 사용)
 
 const bigInt = 123n;
+
 console.log(typeof bigInt);
 
-const b = BigInt(111);
-console.log(b);
+// const b = BigInt(111)
+// console.log( b );
 
 // 6. 참(true, yes) 또는 거짓(false, no)
 
@@ -49,84 +50,104 @@ const isActive = false;
 console.log(typeof isActive);
 
 // 7. 데이터 컬렉션(collection) 또는 복잡한 엔티티(entity)
+
 console.clear();
 
-const obj = {
-  name: 'tiger',
-};
-
-const object = new Object({ name: 'john' });
-
+const obj = { name: 'tiger' }; // object literal
 console.log(obj);
+
+const object = new Object({ name: 'seonbeom' }); // constructor function
 console.log(object);
 
 // 8. 고유한 식별자(unique identifier)
 
 const id = Symbol('uuid');
 const id2 = Symbol('uuid');
+
 console.log(typeof id);
-console.log(typeof id2);
-console.log(id === id2);
 
 /* typeof 연산자의 2가지 사용법 ---------------------------------------------- */
 
 // 1) 연산자 typeof
-
 // 2) 함수 typeof()
 
 // 언어 상, 오류
+
+console.clear();
+
+
+
 
 // Object
 
 const user = {
   name: 'tiger',
   age: 20,
-  sum: function (a, b) {
-    a + b;
+  sum:function(a,b){
+    return a + b
   },
 
-  // 객체 내부 메소드 선언 방법
+  sayHi:function(){ // 1 normal function
+    return 'hello'
+  },
 
-  //1. normal function
-  sayHi: function () {
-    return 'Hello';
-  }, //prototype:{}을 포함하고있음 -> 무거움
+  sayHi2:()=>{      // 2 arrow function
+    return this
+  },
 
-  //2.arrow function
-  sayHi2: () => {
-    return 'hi';
-  }, //prototype가 없음 ->가벼움
+  sayHi3(){         // 3 concise method
+    return this
+  }
+  
 
-  //3. concise method -> 추천
-  sayHi3() {
-    return 'hola';
-  }, // prototype가 없음 -> 가벼움
 };
 
+
+
 // Array
-console.clear();
-const arr = [10, 100, 1000];
-const newArray = new Array(1, 2, 3);
+
+const newArray = new Array(2);
+
+const arr = [
+  10,
+  100,
+  1000,
+  null,
+  undefined,
+  'hello',
+  { name: 'tiger' },
+  function () {},
+];
 
 // function
 
-function 안녕() {
-  console.log(1 + 2);
+function 붕어빵틀(재료){
+  return `따끈 따끈 맛있는 ${재료} 맛 붕어빵`
 }
 
-function 더하기(a, b) {
-  console.log(a + b);
-}
 
-const 결과 = 더하기(1, 2);
+const 팥붕 = 붕어빵틀('팥')
+const 슈붕 = 붕어빵틀('슈크림')
+const 와붕 = 붕어빵틀('와사비')
 
-console.log(결과);
 
-function 붕어빵틀(재료) {
-  return `따끈따끈 맛있는 ${재료}맛 붕어빵`;
-}
+// console.log(팥붕);
+// console.log(슈붕);
+// console.log(와붕);
 
-const 와붕 = 붕어빵틀('와사비');
-console.log(와붕);
+
+
 
 // this
+
+
+
+
+
+
+
+
+
+
+
+

@@ -58,14 +58,50 @@ let goingToWatchMovie = 'yes';
 const message = didWatchMovie.includes('yes')
   ? '그 영화 참 재밌더라'
   : goingToWatchMovie.includes('yes')
-  ? '언제 볼까? 재밌겠다'
-  : '그래..';
+    ? '언제 볼까? 재밌겠다'
+    : '그래..';
 
 // 멀티 조건부 연산자 식
 
-function render(node, isActive) {
+
+
+function render(node,isActive){
+  
   let template = `
-      <div>${isActive ? '안녕~~!!' : '잘가~~!!'}</div>
-    `;
-  node.insertAdjacentHTML('beforeend', template);
+    <div>${isActive ? '안녕~~!!' : '잘가~~!!'}</div>
+  `
+  node.insertAdjacentHTML('beforeend',template);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

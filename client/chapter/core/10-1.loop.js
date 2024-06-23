@@ -1,13 +1,18 @@
+
 /* --------------- */
 /* While Loop      */
 /* --------------- */
 
-// let i = 0;
 
-// while (i < 10) {
-//   console.log(i);
-//   ++i;
+// let i = 10;
+
+// while(i > 0){
+//   console.log(--i)
 // }
+
+
+
+
 
 const frontEndDev = [
   'HTML',
@@ -17,6 +22,8 @@ const frontEndDev = [
   'jQuery',
   'React',
   'Redux',
+  'Lit',
+  'Zustand'
 ];
 
 /* 프론트엔드 개발 집합 항목 출력 ---------------------------------------------- */
@@ -29,18 +36,58 @@ const frontEndDev = [
 // console.log(frontEndDev[5]);
 // console.log(frontEndDev[6]);
 
+
 /* 프론트엔드 개발 집합을 순환해서 각 아이템을 Console 패널에 출력 -------------------- */
-let i = 0;
+
 // while 문 (순환 : 순방향)
 
-while (i < frontEndDev.length) {
-  console.log(frontEndDev[i++]);
+
+let i = 0;
+
+while(i < frontEndDev.length){
+
+  let value = frontEndDev[i];
+  // console.log( value );
+  // console.log(frontEndDev[i++]);
+  i++ 
 }
+
+
+
+
+
+
 
 // while 문 (역순환 : 역방향)
-i = frontEndDev.length - 1;
-while (i >= 0) {
-  console.log(frontEndDev[i--]);
+
+let l = frontEndDev.length - 1;
+
+while(l >= 0){
+  
+  let value = frontEndDev[l];
+
+  console.log(value);
+
+  l--
 }
 
+
+
+
 // 성능 진단 : 순환 vs. 역순환
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

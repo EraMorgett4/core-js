@@ -3,20 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "live-server client --host=localhost --port=5500 --no-browser"
   },
   "keywords": [],
-  "author": "hsw",
+  "author": "범쌤",
   "license": "ISC",
-  "description": "JS Core study",
+  "description": "자바스크립트 코어 학습",
   "devDependencies": {
     "@eslint/js": "^9.3.0",
     "eslint": "^9.3.0",
     "globals": "^15.3.0",
-    "live-server": "^1.1.0"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
+    "live-server": "^1.2.2",
+    "prettier": "^3.2.5"
   }
 }

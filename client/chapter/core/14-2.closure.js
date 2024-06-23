@@ -1,81 +1,193 @@
-function earth() {
+
+
+/* normal function */
+// function earth(){
+ 
+//   let water = true;
+//   let gravity = 10;
+  
+//   return function(value){
+//     gravity = value;
+    
+//     return [water,gravity]
+//   }
+// }
+
+/* arrow function */
+const earth = () => {
+ 
   let water = true;
   let gravity = 10;
-  function tiger(value) {
+  
+  return  (value) => {
     gravity = value;
-    return [water, gravity];
+
+    return [water,gravity]
   }
-
-  return tiger;
 }
 
-const ufo = earth();
 
-/* 
-function earth(){
-let water = true;
-let gravity = 10;
-    return function(value){
-    gravity = value;
-    return
-    }
-}
+const ufo1 = earth()
 
-const ufo = earth();
-*/
+// const ufo2 = earth()
+
+ufo1(-10)
+
+
+
+
+
 
 const button = document.querySelector('button');
 
-// function handleClick() {
+
+
+
+/* normal function */
+// function handleClick(){
+
 //   let isClicked = false;
 
-//   return () => {
-//     if (!isClicked) {
-//       document.body.style.background = 'orange';
-//     } else {
-//       document.body.style.background = 'white';
-//     }
+  
+//   function inner() {
+//     if(!isClicked){
 
+//       document.body.style.background = 'orange'
+//     }else{
+  
+//       document.body.style.background = 'white'
+//     }
+  
 //     isClicked = !isClicked;
-//     console.log('왜눌러');
-//     console.log(`isClicked:${isClicked}`);
-//   };
+//   }
+
+//   return inner;
 // }
 
-// button.addEventListener('click', handleClick());
-
+// IIFE
+/* arrow function */
 const handleClick = (() => {
+
   let isClicked = false;
-
+  
   return () => {
-    if (!isClicked) {
-      document.body.style.background = 'orange';
-    } else {
-      document.body.style.background = 'white';
+    if(!isClicked){
+
+      document.body.style.background = 'orange'
+    }else{
+  
+      document.body.style.background = 'white'
     }
-
+  
     isClicked = !isClicked;
-    console.log('왜눌러');
-    console.log(`isClicked:${isClicked}`);
-  };
-})();
+  }
 
-button.addEventListener('click', handleClick);
+})()
 
-function useState(init) {
+
+button.addEventListener('click',handleClick)
+
+
+
+// 함수는 값 => 어디든 들어갈 수 있습니다. 
+
+// 함수 표현식 
+
+
+
+function useState(init){
   let value = init;
-  function read() {
+
+  function read(){
     return value;
   }
-  function write(newValue) {
+
+  function write(newValue){
     value = newValue;
   }
 
-  return [read, write];
+  return [read,write];
 }
 
-const [getNumber, setNumber] = useState(10);
+const [getNumber,setNumber] = useState(10);
 
-const result = useState(10);
-const getter = result[0];
-const setter = result[1];
+
+
+
+
+
+
+// const getter = result[0]
+// const setter = result[1]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,57 +6,120 @@ let a = 10;
 let b = '';
 let value = Boolean(b);
 
-// 논리곱(그리고) 연산자
+// 논리곱(그리고) 연산자 F&& 
 let AandB = a && b;
-console.log('AandB :', AandB);
+console.log('AandB : ',AandB)
 
-//논리곱 + 할당 연산자
 
-// a &&= b;
+// 논리곱 할당 연산자 Logical AND Assignment
+// a &&= b
 
-// 논리합(또는) 연산자
+
+
+// 논리합(또는) 연산자 ||
 let AorB = a || b;
-console.log('AorB :', AorB);
+console.log('AorB : ',AorB)
 
-//논리합 + 할당연산자
-// a||=b;
+
+// 논리합 할당 연산자 Logical OR Assignment
+// a ||= b
+
+
 
 // 부정 연산자
 let reverseValue = !value;
-console.log('reverseValue : ', reverseValue);
+console.log('reverseValue : ',reverseValue)
+
 
 // 조건 처리
 
 // 첫번째 Falsy를 찾는 연산 (&&)
-//let whichFalsy = true && ' ' && [] && { thisIsFalsy: false };
-// console.log('whichFalsy:', whichFalsy);
-// //let ar = true && [];
-// console.log('ar:', ar);
+let whichFalsy = true && ' ' && [] && {thisIsFalsy:false};
+
 
 // 첫번째 Truthy를 찾는 연산 (||)
-//let whichTruthy = false || '' || [2, 3].length || { thisIsTruthy: true };
+let whichTruthy = false || '' || [2,3].length || {thisIsTruthy:true};
 
-function login() {
-  let isEscPressed = false;
-  document.addEventListener('keydown', function (event) {
-    if (event.key === 'Escape') {
-      isEscPressed = true;
-    }
-  });
 
-  let userName = prompt('누구세요?', '');
+console.clear()
 
-  if (userName == '' || userName == null || isEscPressed == true) alert('취소');
-  else if (userName.toLowerCase() == 'admin') {
-    let password = prompt('비번:', '');
-    password = password.toLowerCase();
-    if (userName.toLowerCase() == 'admin') alert('환영');
-    else if (password == '' || password == null || isEscPressed == true)
-      alert('취소');
-    else alert('비번 틀림');
-  } else alert('진짜 누구임?');
+function sayHi(){
+  return 'hello'
 }
 
-login();
+function login(){
 
-// replace(/\s*/g, '')
+  let userName = prompt('누구세요?');
+
+  let say = sayHi();
+  
+  // userName이 null, undefined => 아래 코드 실행 안함.
+  
+  if(userName === null || undefined) return;
+
+  if(userName.toLowerCase() === 'admin'){
+    let password = prompt('비밀번호는?');
+
+    if(password.toLowerCase() === 'themaster'){
+      console.log(`환영합니다~~!!${say}`);
+
+    }else if(password === null){
+      console.log('취소!');
+
+    }else{
+      console.log('비밀번호를 잘못 입력하셨습니다.');
+      login()
+    }
+  }
+  else if(userName === null || userName.replace(/\s*/g,'') === ''){
+    console.log('취소!');
+  }
+  else{
+    console.log('실패!');
+  }
+
+}
+
+
+
+
+login()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
