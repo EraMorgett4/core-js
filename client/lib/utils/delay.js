@@ -10,42 +10,40 @@ function delay(callback, timeout = 1000) {
 const first = getNode('.first');
 const second = getNode('.second');
 
-first.style.top = '-100px';
-first.style.transform = 'rotate(360deg)';
+// delay(()=>{
+//   first.style.top = '-100px';
+//   second.style.top = '100px';
+//   delay(()=>{
+//     first.style.transform = 'rotate(360deg)';
+//     second.style.transform = 'rotate(-360deg)';
+//     delay(()=>{
+//       first.style.top = '0px';
+//       second.style.top = '0px';
+//     })
+//   })
+//  })
 
-delay(() => {
-  first.style.top = '-100px';
-  second.style.top = '100px';
-  delay(() => {
-    first.style.transform = 'rotate(360deg)';
-    second.style.transform = 'rotate(-360deg)';
-    delay(() => {
-      first.style.top = '0px';
-      second.style.top = '0px';
-    });
-    second.style.transform = 'rotate(-360deg)';
-  });
-  second.style.top = '100px';
-});
+const shouldRejected = true;
 
-const shouldRejected = false;
-
-const p = new Promise((resolve, reject) => {
-  if (!shouldRejected) {
-    resolve('성공!!');
-  } else {
-    reject('실패!');
-  }
-});
-// console.log(p);
+// const p = new Promise((성공, 실패) => {
+//   if (!shouldRejected) {
+//     성공('성공!!');
+//   } else {
+//     실패('실패!');
+//   }
+// });
 
 // 객체 합성
+
 const defaultOptions = {
   shouldRejected: false,
   data: '성공',
   errorMessage: '알 수 없는 오류',
   timeout: 1000,
 };
+
+// const config = Object.assign({},defaultOptions);
+// const config = {...defaultOptions};
 
 function delayP(options) {
   let config = { ...defaultOptions };
@@ -56,12 +54,9 @@ function delayP(options) {
 
   if (isObject(options)) {
     config = { ...defaultOptions, ...options };
+    // Object.assign(config,options)
   }
-  // const {shouldRejected,data,errorMessage,timeout} = options;
 
-  //믹스인
-  // const config = {...defaultOptions, ...options}
-  // console.log(`config:${config}`);
   const { shouldRejected, data, errorMessage, timeout } = config;
 
   return new Promise((resolve, reject) => {
@@ -75,40 +70,26 @@ function delayP(options) {
   });
 }
 
-delayP({
-  shouldRejected: false,
-  data: '성공',
-  errorMessage: '알 수 없는 오류',
-  timeout: 1000,
-});
+delayP(5000);
+// .then(()=>)
+// .then(()=>)
+// .then(()=>)
+// .then(()=>)
+// .then(()=>)
+// .then(()=>)
 
-delayP()
-  .then((res) => {
-    // console.log(res);
-    first.style.top = '-100px';
-    second.style.top = '100px';
+// async / await
 
-    return delayP();
-  })
-
-  .then((res) => {
-    // console.log(res);
-    first.style.transform = 'rotate(360deg)';
-    second.style.transform = 'rotate(-360deg)';
-
-    return delayP();
-  })
-  .then((res) => {
-    first.style.top = '0px';
-    second.style.top = '0px';
-    // console.log(res);
+function d() {
+  return new Promise((resolve, reject) => {
+    resolve('데이터');
   });
+}
 
-//async / await
-
-//await 2가지 기능 수행
-//    1. result 꺼내오기. await만 붙이더라도 바로 data를 꺼낼 수 있다.
-//      이는 Promise 객체여만 꺼내 쓸 수있다.
+// async 함수는 무 조 건 Promise object를 반환한다.
+// await  2가지 기능 수행
+//        1. result 꺼내오기
+//        2. 코드 실행 흐름 제어
 
 async function delayA(data) {
   const p = new Promise((resolve, reject) => {
@@ -117,29 +98,17 @@ async function delayA(data) {
     }, 2000);
   });
 
-  const result = await p; //result에 값이 담기기 전까지 await는 대기하고 있다.
-  // console.log(result);
+  // p.then((res)=>{
+  //   console.log(res);
+  // })
+
+  const result = await p;
+
+  console.log(result);
   return;
 }
 
-// console.log(delayA('지연'));
-delayA('지연').then((res) => {
-  // console.log(res);
-});
-
-const data = await delayA('지연');
-// console.log(`data:${data}`);
-
 async function 라면끓이기() {
-  await delayP();
-  console.log('물');
-  await delayP();
-  console.log('스프');
-  await delayP();
-  console.log('면');
-  await delayP();
-  console.log('그릇');
-
   const a = await delayP({ data: '물' });
   console.log(a);
 
@@ -153,10 +122,12 @@ async function 라면끓이기() {
   console.log(d);
 }
 
-// 라면끓이기();
+// 라면끓이기()
 
 async function getData() {
   const data = await xhrPromise.get('https://pokeapi.co/api/v2/pokemon/172');
+
+  console.log();
 
   insertLast(
     document.body,

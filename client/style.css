@@ -1,16 +1,15 @@
-.container{
+.container {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%);
-  display:flex;
-  gap:1rem;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 1rem;
 
-
-  div{
-    transition: all 1s;
+  div {
+    transition: all 0.5s;
     position: relative;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
   }
 }
