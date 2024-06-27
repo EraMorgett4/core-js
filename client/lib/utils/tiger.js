@@ -17,12 +17,9 @@ export const tiger = async (options) => {
     ...options,
     headers: {
       ...defaultOptions.headers,
-      ...options,
-      headers,
+      ...options.headers,
     },
   };
-
-  // const { url, method, headers, body } = config;
   const response = await fetch(url, restOptions);
 
   if (response.ok) {
@@ -32,7 +29,9 @@ export const tiger = async (options) => {
   return response;
 };
 
-// const result = await tiger.get.(ENDPOINT);
+// const result = await tiger.get(ENDPOINT);
+
+// console.log( result );
 
 tiger.get = (url, options) => {
   return tiger({
@@ -52,11 +51,12 @@ tiger.post = (url, body, options) => {
 
 tiger.delete = (url, options) => {
   return tiger({
-    method: 'delete',
+    method: 'DELETE',
     url,
     ...options,
   });
 };
+
 tiger.put = (url, body, options) => {
   return tiger({
     method: 'PUT',
@@ -65,6 +65,7 @@ tiger.put = (url, body, options) => {
     body: JSON.stringify(body),
   });
 };
+
 tiger.patch = (url, body, options) => {
   return tiger({
     method: 'PATCH',

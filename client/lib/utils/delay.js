@@ -45,7 +45,7 @@ const defaultOptions = {
 // const config = Object.assign({},defaultOptions);
 // const config = {...defaultOptions};
 
-function delayP(options) {
+export function delayP(options) {
   let config = { ...defaultOptions };
 
   if (isNumber(options)) {

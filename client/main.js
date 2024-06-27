@@ -1,6 +1,17 @@
-import { tiger, getNode, insertLast } from './lib/index.js';
+/* global gsap */
 
-const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
+import {
+  tiger,
+  delayP,
+  getNode,
+  changeColor,
+  renderSpinner,
+  renderUserCard,
+  renderEmptyCard,
+  clearContents,
+} from './lib/index.js';
+
+const ENDPOINT = 'http://localhost:3000/users';
 
 // 1. user 데이터 fetch 해주세요.
 //    - tiger.get
@@ -14,28 +25,100 @@ const ENDPOINT = 'https://jsonplaceholder.typicode.com/users';
 const userCardInner = getNode('.user-card-inner');
 
 async function renderUserList() {
-  const response = await tiger.get(ENDPOINT);
+  // 로딩 스피너 렌더링
+  renderSpinner(userCardInner);
 
-  const data = response.data;
+  await delayP(2000);
 
-  data.forEach((user, index) => {
-    const template = `
-      <article class="user-card" data-index="user-${index}">
-          <h3 class="user-name">${user.name}</h3>
-          <div class="user-resource-info">
-            <div>
-              <a class="user-email" href="mailto:${user.email}">${user.email}</a>
-            </div>
-            <div>
-              <a class="user-website" href="${user.website}" target="_blank" rel="noopener noreferer">${user.website}</a>
-            </div>
-          </div>
-          <button class="delete">삭제</button>
-        </article>
-    `;
+  try {
+    gsap.to('.loadingSpinner', {
+      opacity: 0,
+      onComplete() {
+        console.log(this);
+        this._targets[0].remove();
+      },
+    });
+    // getNode('.loadingSpinner').remove()
 
-    insertLast(userCardInner, template);
-  });
+    const response = await tiger.get(ENDPOINT);
+
+    const data = response.data;
+
+    data.forEach((user) => renderUserCard(userCardInner, user));
+
+    changeColor('.user-card');
+
+    gsap.from('.user-card', {
+      x: -100,
+      opacity: 0,
+      stagger: {
+        amount: 1,
+        from: 'start',
+      },
+    });
+  } catch {
+    console.error('에러가 발생했습니다!');
+    renderEmptyCard(userCardInner);
+  }
 }
 
 renderUserList();
+
+function handleDeleteCard(e) {
+  const button = e.target.closest('button');
+  if (!button) return;
+
+  const article = button.closest('article');
+
+  const index = article.dataset.index.slice(5);
+  console.log(index);
+
+  tiger.delete(`${ENDPOINT}/${index}`).then(() => {
+    // 요청 보내고 렌더링하기
+    clearContents(userCardInner);
+    renderUserList();
+  });
+}
+userCardInner.addEventListener('click', handleDeleteCard);
+
+const createButton = getNode('.create');
+const cancelButton = getNode('.cancel');
+const doneButton = getNode('.done');
+
+function handleCreate() {
+  gsap.to('.pop', { autoAlpha: 1 });
+}
+
+function handleCancel(e) {
+  e.stopPropagation();
+  gsap.to('.pop', { autoAlpha: 0 });
+}
+
+function handleDone(e) {
+  e.preventDefault();
+
+  const name = getNode('#nameField').value;
+  const email = getNode('#emailField').value;
+  const website = getNode('#siteField').value;
+
+  tiger
+    .post(ENDPOINT, { name, email, website })
+    .then(() => {
+      //1. 팝업 닫기
+      gsap.to('.pop', { autoAlpha: 0 });
+
+      //2. 카드 컨텐츠 비우기
+      clearContents(userCardInner);
+      //3. 유저카드 렌더링하기
+      renderUserList();
+    })
+    .catch(() => {
+      console.error('handleDone에서 에러발생');
+    });
+}
+
+createButton.addEventListener('click', handleCreate);
+
+cancelButton.addEventListener('click', handleCancel);
+
+doneButton.addEventListener('click', handleDone);
