@@ -34,5 +34,48 @@ ul {
 }
 
 span {
-  display: inline-block;
+  /* display: inline-block; */
+}
+
+.ground {
+  width: 400px;
+  height: 300px;
+  border: 5px solid black;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #66cd7b;
+}
+
+#ball {
+  transition: all 0.3s;
+}
+
+.emotion {
+  font-size: 2rem;
+  position: absolute;
+  pointer-events: none;
+}
+
+section {
+  padding: 1rem;
+  background-color: orange;
+}
+article {
+  padding: 1rem;
+  background-color: hotpink;
+}
+p {
+  padding: 1rem;
+  background-color: dodgerblue;
+}
+
+nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  li {
+    padding: 1rem;
+  }
 }
